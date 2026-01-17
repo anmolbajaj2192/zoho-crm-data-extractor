@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Zoho CRM Data Extractor",
+  "description": "Extract Zoho CRM data and display it in a popup dashboard",
+  "version": "1.0",
+  "permissions": [
+    "storage",
+    "tabs",
+    "scripting"
+  ],
+  "host_permissions": [
+  "https://*.zoho.com/*",
+  "https://*.zoho.in/*"
+]
+,
+  "background": {
+    "service_worker": "background/serviceWorker.js"
+  },
+  "action": {
+    "default_popup": "popup/index.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.zoho.com/*"],
+      "js": ["content/contentScript.js"]
+    }
+  ]
+}
