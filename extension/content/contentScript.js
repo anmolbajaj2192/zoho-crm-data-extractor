@@ -21,7 +21,7 @@ function showStatus(text) {
   setTimeout(() => host.remove(), 2000);
 }
 
-showStatus("Extracting Leads...");
+// -------------------- LEADS EXTRACTION --------------------
 
 function extractLeads() {
   const leadElements = document.querySelectorAll(
@@ -42,7 +42,7 @@ function extractLeads() {
   return leads;
 }
 
-showStatus("Extracting Deals...");
+// -------------------- DEALS EXTRACTION --------------------
 
 function extractDeals() {
   const dealTextElements = document.querySelectorAll("a lyte-text");
@@ -70,9 +70,13 @@ function extractDeals() {
   return deals;
 }
 
+// -------------------- MESSAGE HANDLER --------------------
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+
   if (message.type === "EXTRACT_LEADS") {
+    showStatus("Extracting Leads...");
+
     const leads = extractLeads();
     chrome.storage.local.set(
       {
@@ -87,6 +91,8 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   }
 
   if (message.type === "EXTRACT_DEALS") {
+    showStatus("Extracting Deals...");
+
     const deals = extractDeals();
     chrome.storage.local.set(
       {
