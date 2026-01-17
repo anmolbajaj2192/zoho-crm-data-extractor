@@ -80,3 +80,47 @@ This approach ensures stable extraction across page reloads and module transitio
     "lastSync": 1234567890
   }
 }
+```
+## Features
+- Extract Leads and Deals from Zoho CRM
+- Deal pipeline awareness (best-effort from visible UI)
+- Local persistence using `chrome.storage.local`
+- React-based popup dashboard
+- Shadow DOM status indicator during extraction
+- SPA-safe extraction using dynamic script injection
+
+---
+
+## Limitations
+- Pagination handling is not implemented
+- Canvas view is not supported
+- Team Selling and Deal Split features are not implemented (bonus scope)
+- Stage extraction is UI-aware but not deeply parsed
+
+These trade-offs were made intentionally to prioritize reliability and core functionality
+within the given time constraints.
+
+---
+
+## How to Run Locally
+
+1. Install dependencies:
+   ```bash
+   npm install
+2. Build the popup UI:
+   ```bash
+   npm run build
+3. Open Chrome and go to:
+   ```bash
+   chrome://extensions
+4. Enable Developer Mode
+5. Click Load unpacked
+6. Select the extension/ directory
+
+Future Improvements
+Add support for Contacts, Accounts, and Tasks
+Implement pagination handling
+Export extracted data as CSV/JSON
+Add search and filtering in popup dashboard
+Real-time sync across tabs using chrome.storage.onChanged
+
